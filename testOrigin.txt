@@ -1,0 +1,1 @@
+测试将http方式push换成ssh方式push方式，是否无需输入github用户名和密码
