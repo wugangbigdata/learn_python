@@ -1,0 +1,4 @@
+本文档说明pycharm的一些设置和常用快捷键
+1. 设置Python自动引入包
+file -> Setting ->Editor->general > autoimport-> python :show popup
+快捷键：Alt + Enter: 自动添加包
