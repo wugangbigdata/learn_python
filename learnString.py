@@ -4,6 +4,7 @@
 #单引号字符串操作
 from math import pi
 from string import Template
+from stringold import maketrans
 
 singleQuotation = 'wugang love "bigdata" !'
 print singleQuotation
@@ -56,3 +57,55 @@ format = '%010.2f'%pi
 print format
 format = '%+5d'%10 + '\n' + '%+5d'%-10
 print format
+
+#格式化实例，使用给定宽度打印格式化价格列表
+#可以用（*）作为字段宽度或者精度，此时数值会从元组参数中读出
+#width = input("please input width(width>10):")
+width = 30
+price_width = 10;
+item_width = width - price_width
+head_format = '%-*s%*s'
+format = "%-*s%*.2f"
+print "=" * width
+print head_format %(item_width,"Item", price_width, "Price")
+print "-" * width
+print format % (item_width, "Apple", price_width, 2.2)
+print format % (item_width, "Banana", price_width, 6.2)
+print "-" * width
+
+#字符串常用方法
+#find，查找子串，返回最左端索引
+parentString = "wugang love bigdata very much!"
+subString = "wugang"
+index = parentString.find(subString)
+print "find subString in index:%d, subString:%s" %(index, parentString[index:len(subString)])
+#join,连接列表元素，必须为字符串
+directory = '','usr','bin','env'
+slash = '\\'
+path = slash.join(directory)
+print path
+#lower 返回小写字母，upper，返回大写字母
+testString = "Wugang love BigData very much !"
+upperString = testString.upper()
+lowerString = upperString.lower()
+print testString + "\n" + upperString + "\n" + lowerString
+#replace
+replaceFromString = 'love'
+replaceToString = "evol"
+stringAfterReplace = testString.replace(replaceFromString, replaceToString)
+print stringAfterReplace
+#split  切割字符串成字符串序列
+splitSequence = testString.split(' ')
+print splitSequence
+#strip 返回去除两侧指定字符参数（默认为空格）的字符串
+testStringAddSpace = '  ' + testString + '  '
+testStringAfterStrip = testStringAddSpace.strip()
+testStringDelete = testString.strip('!')
+print testStringAddSpace + "\n" + testStringAfterStrip + "\n" + testStringDelete
+#translate，转换单个字符,reverseTable为字符对应转换表
+fromString = "abcdefghigklmn"
+toString = fromString[::-1]
+reverseTable = maketrans(fromString, toString)
+translateString = testString.translate(reverseTable)
+print fromString + "\n" + toString
+print testString + '\n' + translateString
