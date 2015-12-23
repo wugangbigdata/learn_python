@@ -4,6 +4,9 @@
 __metaclass__ = type
 
 class Person:
+    #构造函数
+    def __init__(self, personName = "wugang"):
+        self.name = personName
     def setName(self, name):
         self.name = name
 
@@ -14,7 +17,8 @@ class Person:
         print "Hello, World! I am %s." %self.name
 
 person = Person()
-person.setName("wugang")
+person.greet()
+person.setName("yangjuan")
 person.greet()
 
 #类变量和类方法私有化，只要在它的名字前面加上双下划线
@@ -44,3 +48,28 @@ sampFilter = SAMP()
 sampFilter.init()
 filter = sampFilter.filter(["SAMP", 1, "WU", "SAMP", "samp", [1, "SAMP"]])
 print filter
+
+#旧版本中的未绑定方法实现子类调用超类的构造方法
+class Bird:
+    def __init__(self):
+        self.hungry = True
+    def eat(self):
+        if self.hungry:
+            print "hungry..."
+            self.hungry = False
+        else:
+            print "No, thanks!"
+
+class SongBird(Bird):
+    def __init__(self):
+        #旧版本用非绑定方法
+        #Bird.__init__(self)
+        #新版本用super函数
+        super(SongBird, self).__init__()
+        self.sound = "gojigoji"
+    def sing(self):
+        print self.sound
+
+songBird = SongBird()
+songBird.eat()
+songBird.sing()
