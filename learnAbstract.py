@@ -28,3 +28,19 @@ class Secretive:
 
 secret = Secretive()
 secret.accessible()
+
+#继承
+class Filter:
+    def init(self):
+        self.blocked = []
+    def filter(self, sequence):
+        return [x for x in sequence if x not in self.blocked]
+
+class SAMP(Filter):
+    def init(self):
+        self.blocked = ["SAMP"]
+
+sampFilter = SAMP()
+sampFilter.init()
+filter = sampFilter.filter(["SAMP", 1, "WU", "SAMP", "samp", [1, "SAMP"]])
+print filter
