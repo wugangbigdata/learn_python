@@ -4,6 +4,7 @@
 
 #集合,集合元素无序
 #集合可变，集合元素不可变
+import shelve
 from collections import deque
 from heapq import *
 from random import shuffle
