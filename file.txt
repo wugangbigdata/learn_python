@@ -1,0 +1,5 @@
+Hello,0123456splay_prepare_read() succeeds, 
+wugang love bigdata!
+Therefore when the display fd becomes (or already is) readable, wl_display_read_events() should be called as soon as possible to unblock all threads. 
+If wl_display_read_events() will not be called, 
+then wl_display_cancel_read() must be called instead to let the other threads continue.
